@@ -14,7 +14,7 @@ namespace ExpenseManagementSystemsVBDotNet
 {
     public partial class RegisterForm : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-I69OQPV\SQLEXPRESS; Initial Catalog=ExpenseManagementSystemDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-EBP6R5FR; Initial Catalog=ExpenseManagementSystemDB;Integrated Security=True");
 
         public RegisterForm()
         {

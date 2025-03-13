@@ -14,7 +14,7 @@ namespace ExpenseManagementSystemsVBDotNet
 {
     public partial class UCIncomeForm : UserControl
     {
-        string cs = @"Data Source=DESKTOP-I69OQPV\SQLEXPRESS; Initial Catalog=ExpenseManagementSystemDB;Integrated Security=True";
+        string cs = @"Data Source=LAPTOP-EBP6R5FR; Initial Catalog=ExpenseManagementSystemDB;Integrated Security=True";
 
         public UCIncomeForm()
         {

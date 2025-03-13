@@ -5,7 +5,6 @@ This repository contains a complete Expense Management System developed as a des
 - Full source code for seamless integration and customization.
 - 15+ dynamically connected Windows Forms for managing expenses efficiently.
 - Features such as user authentication, category-wise tracking, and detailed reporting.
-- Ideal for students, developers, or businesses looking for a comprehensive solution to track and manage expenses.
 
 
 ## 📖 Overview
@@ -32,26 +31,26 @@ The **Expense Management System** is a desktop application built using **C#.NET*
 ## 🖼️ Screenshots
 
 * Login Page
-  ![1Loginpage](https://github.com/user-attachments/assets/da99845f-f80d-40ce-855a-f23f35288968)
+  ![1Loginpage](https://github.com/user-attachments/assets/19ba1b6d-102e-4105-a17c-fa1a92294e39)
 
 * SignUp Page
-  ![2signup](https://github.com/user-attachments/assets/573b423b-8372-4bdb-9412-13232ce6ae3d)
+  ![2signup](https://github.com/user-attachments/assets/96036d6c-03e0-41f7-a88c-488d39d3cd75)
 
 
 * Dashboard
-  ![3Dashboard](https://github.com/user-attachments/assets/f72b1283-b03a-4681-93ef-15ee5e5f4317)
+  ![3Dashboard](https://github.com/user-attachments/assets/1881e661-4076-45b4-8ece-e7031eac46d2)
 
 * Category
-![4category](https://github.com/user-attachments/assets/48efbfe5-0e96-49a6-ae9e-286376ef370e)
+![4category](https://github.com/user-attachments/assets/65cd8d54-bb05-4329-938b-2ae3d090fb07)
 
   
 * Income
 
-  ![5income](https://github.com/user-attachments/assets/a8bae480-5f95-4d50-b494-9a1b64ed9eb9)
+  ![5income](https://github.com/user-attachments/assets/4a43d074-bd8e-4750-8bc8-9dcfa05aeb2d)
 
 
 * Expense
-![6expense](https://github.com/user-attachments/assets/f7ed847c-e3bd-4c24-a1a9-932583453ede)
+![6expense](https://github.com/user-attachments/assets/baa9017a-1473-4cf7-be50-5bde8f0b1f04)
 
   
 ---
@@ -71,173 +70,3 @@ Contributions are welcome! Please follow these steps:
 - 3 Commit your changes: git commit -m 'Add new feature'.
 - 4 Push to the branch: git push origin feature-name.
 - 5 Open a pull request.
-
-
-
-## 🗄️ Database Setup
-
-Follow these steps to set up the SQL Server database:
-
-1. Open SQL Server Management Studio (SSMS).
-2. Create a new database named `ExpenseManagementSystemDB` .
-3. Execute the  script to populate the database with sample data.
-
-### SQL Scripts
--- Database: ExpenseManagementSystem
-```sql
-CREATE DATABASE ExpenseManagementSystem;
-
-USE ExpenseManagementSystem;
-
--- Create Users Table
-CREATE TABLE Users (
-    UserID INT IDENTITY(1,1) PRIMARY KEY,
-    Username NVARCHAR(50) NOT NULL,
-    Password NVARCHAR(255) NOT NULL,
-    Role NVARCHAR(20) NOT NULL
-);
-
-Create table tblUsers
-(
-Id int primary key identity(1,1),
-username varchar(50),
-password varchar(50),
-date_create date
-)
-go
-
-
-Create table tblCategories
-(
-id int primary key identity(1,1),
-category varchar(200),
-type varchar(200),
-status varchar(200),
-date_insert date
-)
-
-
-Create table tblIncome
-(
-id int primary key identity(1,1),
-category varchar(200),
-item varchar(200),
-income float,
-description nvarchar(500),
-date_income date,
-date_insert date
-)
-
-
-Create table tblExpenses
-(
-id int primary key identity(1,1),
-category varchar(200),
-item varchar(200),
-expense float,
-description nvarchar(500),
-date_expense date,
-date_insert date
-)
-
-```
-## Login Form Code
-
-Below is a sample login form code in C#:
-
-```csharp
-// C# Code for a Login Form
-using System.Data;
-using System.Data.SqlClient;
-
-namespace ExpenseManagementSystemsVBDotNet
-{
-    public partial class Form1 : Form
-    {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-I69OQPV\SQLEXPRESS; Initial Catalog=ExpenseManagementSystemDB;Integrated Security=True");
-
-        public Form1()
-        {
-            InitializeComponent();
-        }
-        public static string username;
-        public bool checkConnection()
-        {
-            return (con.State == ConnectionState.Closed) ? true : false;
-        }
-
-        private void picExit_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you want to exit?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
-
-        private void btnSignup_Click(object sender, EventArgs e)
-        {
-            RegisterForm registerfrm = new RegisterForm();
-            registerfrm.Show();
-            this.Hide();
-        }
-
-        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
-        {
-            bool isChecked = chkShowPassword.Checked;
-            txtPassword.UseSystemPasswordChar = !isChecked;
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            try { 
-                if(txtUsername.Text=="" || txtPassword.Text=="")
-                {
-                    MessageBox.Show("invalid username and password", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    con.Open();
-                    string qr = "select username, password from tblUsers where username =@user and password=@pass";
-                    using (SqlCommand cmd=new SqlCommand(qr,con))
-                    {
-                        cmd.Parameters.AddWithValue("@user",txtUsername.Text.Trim());
-                        cmd.Parameters.AddWithValue("@pass",txtPassword.Text.Trim());
-                        SqlDataAdapter da = new SqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        if(dt.Rows.Count>0)
-                        {
-                            username = txtUsername.Text;
-                            //MessageBox.Show("Login Successfully", "Success Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DashboardForm dfrm = new DashboardForm();
-                            dfrm.Show();
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("incorrect username/password", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            
-                        }
-;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);               
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
-    }
-}
-
-
-
-```
-
-
-
-

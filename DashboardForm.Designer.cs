@@ -194,7 +194,7 @@
             lblDisplayName.Name = "lblDisplayName";
             lblDisplayName.Size = new Size(48, 19);
             lblDisplayName.TabIndex = 4;
-            lblDisplayName.Text = "label2";
+            lblDisplayName.Text = "Rohitha";
             // 
             // label5
             // 

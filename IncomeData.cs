@@ -10,7 +10,7 @@ namespace ExpenseManagementSystemsVBDotNet
 {
     internal class IncomeData
     {
-        string cs = @"Data Source=DESKTOP-I69OQPV\SQLEXPRESS; Initial Catalog=ExpenseManagementSystemDB;Integrated Security=True";
+        string cs = @"Data Source=LAPTOP-EBP6R5FR; Initial Catalog=ExpenseManagementSystemDB;Integrated Security=True";
         public int ID { set; get; }
         public string Category { set; get; }
         public string Item { set; get; }
