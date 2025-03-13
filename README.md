@@ -238,16 +238,6 @@ namespace ExpenseManagementSystemsVBDotNet
 
 ```
 
-## 📺 Video Tutorial
-
-You can watch the **full video tutorial** for this project on my YouTube channel:  
-👉 [CoderBaba](https://www.youtube.com/@CoderBaba)
-
-Don't forget to **like**, **share**, and **subscribe** to support me and stay updated with more projects and tutorials! 💖
-
-Happy Coding!
-
-
 
 
 
