@@ -51,11 +51,3 @@ The **Expense Management System** is a desktop application built using **C#.NET*
 
 * Expense
 ![6expense](https://github.com/user-attachments/assets/baa9017a-1473-4cf7-be50-5bde8f0b1f04)
-
-  
----
-
-## ⚙️ Prerequisites
-- Visual Studio (2019 or later)
-- SQL Server (2017 or later)
-- .NET Framework (4.7.2 or later)
